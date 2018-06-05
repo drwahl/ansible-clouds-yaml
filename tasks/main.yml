@@ -1,0 +1,14 @@
+---
+- name: Create /etc/openstack directory
+  file:
+    path: /etc/openstack
+    owner: root
+    group: root
+    mode: 0777
+    state: directory
+
+- name: Deploy clouds.yaml
+  template:
+    src: clouds.yaml.j2
+    dest: /etc/openstack/clouds.yaml
+    #with: "{{ clouds }}"

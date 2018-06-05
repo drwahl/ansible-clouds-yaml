@@ -1,0 +1,13 @@
+clouds:
+{% for cloud, value in clouds.iteritems() %}
+  {{ cloud }}:
+    auth:
+      auth_url: {{ value['url']|default('', true) }}
+      project_name: {{ value['project_name']|default('', true) }}
+      username: {{ value['username']|default('', true) }}
+      user_domain_name: {{ value['user_domain_name']|default('', true) }}
+      project_domain_name: {{ value['project_domain_name']|default('', true) }}
+      password: {{ value['password']|default('', true) }}
+    identity_api_version: {{ value['identity_api_version']|default('2.0', true) }}
+    region_name: RegionOne
+{% endfor %}
