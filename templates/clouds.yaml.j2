@@ -19,7 +19,8 @@ clouds:
       {% endif -%}
       {% if value['password'] is defined -%}
       password: {{ value['password']|default('', true) }}
-      {% endif -%}
+      {%- endif %}
+
     identity_api_version: {{ value['identity_api_version']|default('2.0', true) }}
     region_name: RegionOne
 {% endfor %}
