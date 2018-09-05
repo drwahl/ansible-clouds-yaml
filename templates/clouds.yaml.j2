@@ -2,12 +2,24 @@ clouds:
 {% for cloud, value in clouds.iteritems() %}
   {{ cloud }}:
     auth:
+      {% if value['url'] is defined -%}
       auth_url: {{ value['url']|default('', true) }}
+      {% endif -%}
+      {% if value['project_name'] is defined -%}
       project_name: {{ value['project_name']|default('', true) }}
+      {% endif -%}
+      {% if value['username'] is defined -%}
       username: {{ value['username']|default('', true) }}
+      {% endif -%}
+      {% if value['user_domain_name'] is defined -%}
       user_domain_name: {{ value['user_domain_name']|default('', true) }}
+      {% endif -%}
+      {% if value['project_domain_name'] is defined -%}
       project_domain_name: {{ value['project_domain_name']|default('', true) }}
+      {% endif -%}
+      {% if value['password'] is defined -%}
       password: {{ value['password']|default('', true) }}
+      {% endif -%}
     identity_api_version: {{ value['identity_api_version']|default('2.0', true) }}
     region_name: RegionOne
 {% endfor %}
