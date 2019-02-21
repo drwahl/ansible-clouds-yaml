@@ -12,7 +12,16 @@ as follows:
       username: test_user
       password: not_a_real_password
 ```
-
+In addition, an optional `clouds_config` variable may be provided to further
+control how the clouds.yaml file is deployed:
+```
+  clouds_config:
+    path: ~/.openstack
+    owner: username
+    group: groupname
+    mode: 755
+    become_root: no
+```
 Some additional information can be provided as well, such as the user and
 project domain and the indentity API version.  A successful usecase for this
 role has been to create a templated `clouds` variable in `group_vars/all.yaml`
