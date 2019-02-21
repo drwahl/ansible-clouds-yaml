@@ -1,5 +1,5 @@
 ---
-- name: Create /etc/openstack directory
+- name: Create the clouds.yml parent directory
   file:
     path: "{{ clouds_config.path }}"
     owner: "{{ clouds_config.user | default(omit) }}"
