@@ -5,6 +5,12 @@ To configure your clouds.yaml file, a variable called `clouds` must be provided
 as follows:
 
 ```
+  clouds_config: _(this and all sub-items are optional)_
+    path: ~/.openstack
+    owner: username
+    group: groupname
+    mode: 755
+    become_root: no
   clouds:
     test_cloud_uno:
       url: https://example.com:5000

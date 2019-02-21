@@ -1,14 +1,15 @@
 ---
 - name: Create /etc/openstack directory
   file:
-    path: /etc/openstack
-    owner: root
-    group: root
-    mode: 0777
+    path: "{{ clouds_config.path }}"
+    owner: "{{ clouds_config.user | default(omit) }}"
+    group: "{{ clouds_config.group | default(omit) }}"
+    mode: "{{ clouds_config.mode | default(omit) }}"
     state: directory
+  become: "{{ clouds_config.become_root }}"
 
 - name: Deploy clouds.yaml
   template:
     src: clouds.yaml.j2
-    dest: /etc/openstack/clouds.yaml
-    #with: "{{ clouds }}"
+    dest: "{{ clouds_config.path }}/clouds.yaml"
+  become: "{{ clouds_config.become_root }}"
