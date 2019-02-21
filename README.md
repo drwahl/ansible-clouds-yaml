@@ -5,12 +5,6 @@ To configure your clouds.yaml file, a variable called `clouds` must be provided
 as follows:
 
 ```
-  clouds_config: _(this and all sub-items are optional)_
-    path: ~/.openstack
-    owner: username
-    group: groupname
-    mode: 755
-    become_root: no
   clouds:
     test_cloud_uno:
       url: https://example.com:5000
@@ -18,7 +12,16 @@ as follows:
       username: test_user
       password: not_a_real_password
 ```
-
+In addition, an optional `clouds_config` variable may be provided to further
+control how the clouds.yaml file is deployed:
+```
+  clouds_config:
+    path: ~/.openstack
+    owner: username
+    group: groupname
+    mode: 755
+    become_root: no
+```
 Some additional information can be provided as well, such as the user and
 project domain and the indentity API version.  A successful usecase for this
 role has been to create a templated `clouds` variable in `group_vars/all.yaml`
