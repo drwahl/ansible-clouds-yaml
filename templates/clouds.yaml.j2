@@ -1,5 +1,5 @@
 clouds:
-{% for cloud, value in clouds.iteritems() %}
+{% for cloud, value in clouds.items() %}
   {{ cloud }}:
     auth:
       {% if value['url'] is defined -%}
