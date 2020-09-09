@@ -21,6 +21,13 @@ clouds:
       password: {{ value['password']|default('', true) }}
       {%- endif %}
 
-    identity_api_version: {{ value['identity_api_version']|default('2.0', true) }}
-    region_name: RegionOne
+    {% for api in ['identity','compute','volume','object','image','network','baremetal','orchestration','dns'] -%}
+    {% if value[api + '_api_version'] is defined -%}
+    {{ api }}_api_version: {{ value[api + '_api_version'] }}
+    {% endif -%}
+    {%- endfor -%}
+    {% if value['interface'] is defined -%}
+    interface: {{ value['interface'] }}
+    {%- endif -%}
+    region_name: {{ value['region_name']|default('RegionOne', true) }}
 {% endfor %}
